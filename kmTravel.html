@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成都三日游行程规划</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3d8f8a;
+            --secondary-color: #f0f5f5;
+            --text-color: #333;
+            --border-color: #ddd;
+            --icon-attraction: #e88c5a;
+            --icon-food: #e67e22;
+            --icon-transport: #3498db;
+            --icon-culture: #9b59b6;
+            --icon-leisure: #2ecc71;
+            --icon-shopping: #f1c40f;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f4f4f4;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            margin: 20px auto;
+            padding: 15mm;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto 1fr auto;
+            gap: 20px;
+            grid-template-areas:
+                "header header"
+                "overview overview"
+                "details practical"
+                "footer footer";
+        }
+
+        .planner-header {
+            grid-area: header;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+            position: relative;
+        }
+
+        .planner-header h1 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .planner-header p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        
+        .weather-info {
+            position: absolute;
+            top: 0;
+            right: 0;
+            text-align: right;
+            font-size: 14px;
+        }
+        .weather-info i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+
+        .trip-overview {
+            grid-area: overview;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .day-summary {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .day-summary h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        .day-summary ul {
+            padding-left: 20px;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .day-summary ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .day-summary ul li i {
+            margin-right: 8px;
+            width: 16px;
+            text-align: center;
+        }
+
+        .detailed-schedule {
+            grid-area: details;
+        }
+
+        .day-plan h2 {
+            font-size: 20px;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        
+        .day-plan:not(:first-child) h2 {
+            margin-top: 20px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: white;
+            border: 3px solid var(--primary-color);
+        }
+
+        .timeline-item-content {
+            background-color: #fafafa;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        .timeline-item-content strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        
+        .timeline-item-content p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .timeline-item-content .time {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .practical-info {
+            grid-area: practical;
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .practical-info h3 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .info-section {
+            margin-bottom: 20px;
+        }
+        
+        .info-section h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+        
+        .info-section ul {
+            padding-left: 20px;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        .info-section ul li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .info-section ul li i {
+            margin-right: 8px;
+            color: var(--primary-color);
+            width: 16px;
+            text-align: center;
+        }
+
+        .planner-footer {
+            grid-area: footer;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+        
+        .print-button:hover {
+            background-color: #2c6f6a;
+        }
+        
+        .print-button i {
+            margin-right: 10px;
+        }
+        
+        .icon-attraction { color: var(--icon-attraction); }
+        .icon-food { color: var(--icon-food); }
+        .icon-transport { color: var(--icon-transport); }
+        .icon-culture { color: var(--icon-culture); }
+        .icon-leisure { color: var(--icon-leisure); }
+        .icon-shopping { color: var(--icon-shopping); }
+
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .a4-page {
+                width: 100%;
+                min-height: 0;
+                box-shadow: none;
+                margin: 0;
+                padding: 10mm;
+                border: 1px dashed #ccc; /* 辅助剪裁线 */
+            }
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-button" onclick="window.print()"><i class="fas fa-print"></i>打印此行程</button>
+
+    <div class="a4-page">
+        <header class="planner-header">
+            <h1>成都三日休闲文化之旅</h1>
+            <p>一个充满活力、美食与悠久历史的城市</p>
+            <div class="weather-info">
+                <i class="fas fa-cloud-sun"></i>
+                <span>天气参考: 阵雨转多云, 21-31°C</span>
+            </div>
+        </header>
+
+        <section class="trip-overview">
+            <div class="day-summary">
+                <h3>第一天: 憨态熊猫 & 古刹禅意</h3>
+                <ul>
+                    <li><i class="fas fa-paw icon-attraction"></i> 探访国宝大熊猫</li>
+                    <li><i class="fas fa-place-of-worship icon-culture"></i> 漫步文殊院</li>
+                    <li><i class="fas fa-utensils icon-food"></i> 寻味宽窄巷子</li>
+                </ul>
+            </div>
+            <div class="day-summary">
+                <h3>第二天: 三国风云 & 成都慢生活</h3>
+                <ul>
+                    <li><i class="fas fa-landmark icon-culture"></i> 梦回三国武侯祠</li>
+                    <li><i class="fas fa-theater-masks icon-culture"></i> 欣赏川剧变脸</li>
+                    <li><i class="fas fa-coffee icon-leisure"></i> 人民公园喝茶体验</li>
+                </ul>
+            </div>
+            <div class="day-summary">
+                <h3>第三天: 诗圣情怀 & 都市脉搏</h3>
+                <ul>
+                    <li><i class="fas fa-book-open icon-culture"></i> 拜访杜甫草堂</li>
+                    <li><i class="fas fa-shopping-bag icon-shopping"></i> 潮流地标太古里</li>
+                    <li><i class="fas fa-pepper-hot icon-food"></i> 品尝正宗成都火锅</li>
+                </ul>
+            </div>
+        </section>
+
+        <main class="detailed-schedule">
+            <div class="day-plan">
+                <h2>第一天</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <strong><span class="time">08:00 - 12:00</span> <i class="fas fa-paw icon-attraction"></i> 成都大熊猫繁育研究基地</strong>
+                            <p>地址: 熊猫大道1375号。早点出发，看熊猫宝宝们最活跃的时刻。建议游玩3-4小时。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <strong><span class="time">13:30 - 15:30</span> <i class="fas fa-place-of-worship icon-culture"></i> 文殊院</strong>
+                            <p>地址: 文殊院街66号。市中心一片宁静的佛教圣地，感受禅意，可以品尝洞子口张老二凉粉。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <strong><span class="time">16:00 - 晚餐</span> <i class="fas fa-street-view icon-leisure"></i> 宽窄巷子</strong>
+                            <p>地址: 宽巷子27号。由宽巷子、窄巷子、井巷子组成，体验成都的老院子文化，并在此寻找地道小吃和晚餐。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="day-plan">
+                <h2>第二天</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <strong><span class="time">09:30 - 12:00</span> <i class="fas fa-landmark icon-culture"></i> 武侯祠 & 锦里</strong>
+                            <p>地址: 武侯祠大街231号。中国唯一君臣合祀祠庙，纪念诸葛亮。紧邻的锦里古街小吃众多，热闹非凡。</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <strong><span class="time">14:00 - 17:00</span> <i class="fas fa-coffee icon-leisure"></i> 人民公园</strong>
+                            <p>地址: 小南街8号。去鹤鸣茶社点一杯盖碗茶，体验"掏耳朵"，感受成都人的"巴适"慢生活。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <strong><span class="time">19:30 - 21:00</span> <i class="fas fa-theater-masks icon-culture"></i> 蜀风雅韵看川剧</strong>
+                            <p>地址: 琴台路132号文化公园内。欣赏川剧变脸、吐火、滚灯等绝活，是体验四川文化不可错过的一站。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="day-plan">
+                <h2>第三天</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <strong><span class="time">09:30 - 12:00</span> <i class="fas fa-book-open icon-culture"></i> 杜甫草堂</strong>
+                            <p>地址: 青华路37号。中国唐代大诗人杜甫流寓成都时的故居，园林清幽，竹木掩映，充满诗意。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <strong><span class="time">14:00 - 17:00</span> <i class="fas fa-shopping-bag icon-shopping"></i> 春熙路 & 太古里</strong>
+                            <p>地址: 中纱帽街8号。成都最繁华的商业街和时尚地标，传统建筑与现代商业完美结合，适合逛街购物。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <strong><span class="time">18:00 - 晚餐</span> <i class="fas fa-pepper-hot icon-food"></i> 告别火锅</strong>
+                            <p>在太古里或春熙路附近选择一家评价好的火锅店，用一顿酣畅淋漓的火锅结束美好的成都之旅。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="practical-info">
+            <h3><i class="fas fa-info-circle"></i> 实用信息</h3>
+            <div class="info-section">
+                <h4><i class="fas fa-subway"></i> 主要交通</h4>
+                <ul>
+                    <li><i class="fas fa-ticket-alt"></i> **熊猫基地:** 地铁3号线"熊猫大道站"下，转乘景区直通车。</li>
+                    <li><i class="fas fa-ticket-alt"></i> **文殊院:** 地铁1号线"文殊院站"K口出。</li>
+                    <li><i class="fas fa-ticket-alt"></i> **宽窄巷子:** 地铁4号线"宽窄巷子站"B口出。</li>
+                    <li><i class="fas fa-ticket-alt"></i> **武侯祠/锦里:** 地铁3号线"高升桥站"D口出，步行约15分钟。</li>
+                     <li><i class="fas fa-ticket-alt"></i> **人民公园:** 地铁2号线"人民公园站"B口出。</li>
+                    <li><i class="fas fa-ticket-alt"></i> **春熙路/太古里:** 地铁2/3号线"春熙路站"下。</li>
+                </ul>
+            </div>
+            <div class="info-section">
+                <h4><i class="fas fa-lightbulb"></i> 旅行贴士</h4>
+                <ul>
+                    <li><i class="fas fa-mobile-alt"></i> 下载"天府通"APP或使用微信/支付宝乘车码，方便乘坐公共交通。</li>
+                    <li><i class="fas fa-umbrella-beach"></i> 成都天气多变，建议随身携带雨具。</li>
+                    <li><i class="fas fa-utensils"></i> 川菜多油多辣，肠胃敏感者请注意。</li>
+                    <li><i class="fas fa-ticket-alt"></i> 热门景点门票和川剧表演建议提前在网上预订。</li>
+                </ul>
+            </div>
+             <div class="info-section">
+                <h4><i class="fas fa-phone-alt"></i> 紧急联系</h4>
+                <ul>
+                    <li><i class="fas fa-first-aid"></i> 旅游咨询: 12301</li>
+                    <li><i class="fas fa-car-crash"></i> 紧急求助: 110 (警察), 120 (急救)</li>
+                </ul>
+            </div>
+        </aside>
+
+        <footer class="planner-footer">
+            <p>祝您在成都旅途愉快！ | 由AI为您精心策划</p>
+        </footer>
+    </div>
+
+</body>
+</html> 
