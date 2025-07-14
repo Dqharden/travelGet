@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>涠洲岛三日游行程规划</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root{
+            --primary:#0e8b9d;
+            --secondary:#e8f6f7;
+            --border:#ccc;
+            --text:#333;
+            --icon-sea:#1abc9c;
+            --icon-food:#e67e22;
+            --icon-bed:#9b59b6;
+            --icon-ship:#3498db;
+            --icon-sun:#f1c40f;
+        }
+        body{font-family:'Noto Sans SC',sans-serif;background:#f4f4f4;color:var(--text);margin:0;padding:20px;display:flex;flex-direction:column;align-items:center;}
+        .page{width:210mm;min-height:297mm;background:#fff;padding:15mm;box-shadow:0 0 10px rgba(0,0,0,.1);box-sizing:border-box;display:grid;gap:18px;grid-template-columns:1fr 1fr;grid-template-rows:auto auto 1fr auto;grid-template-areas:"head head""overview overview""detail info""foot foot";}
+        header{grid-area:head;text-align:center;border-bottom:2px solid var(--primary);padding-bottom:12px;position:relative;}
+        header h1{margin:0;font-size:30px;color:var(--primary);font-weight:700;}
+        header p{margin:4px 0;font-size:15px;}
+        .weather{position:absolute;right:0;top:0;font-size:14px;color:var(--text);} .weather i{margin-right:4px;color:var(--primary);}
+        .overview{grid-area:overview;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+        .card{background:var(--secondary);padding:14px;border-radius:8px;border-left:5px solid var(--primary);} .card h3{margin:0 0 6px;color:var(--primary);font-size:17px;} .card ul{margin:0;padding-left:18px;list-style:none;} .card li{font-size:14px;margin-bottom:6px;} .card li i{width:16px;text-align:center;margin-right:6px;}
+        .detail{grid-area:detail;}
+        .day{margin-bottom:18px;} .day h2{font-size:19px;color:var(--primary);border-bottom:1px solid var(--border);padding-bottom:4px;margin:0 0 12px;}
+        .timeline{position:relative;padding-left:28px;border-left:2px solid var(--border);} .item{position:relative;margin-bottom:18px;} .item:last-child{margin-bottom:0;} .item::before{content:"";position:absolute;left:-34px;top:6px;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid var(--primary);} .content{background:#fafafa;padding:12px;border-radius:6px;font-size:14px;} .content strong{display:block;margin-bottom:3px;} .time{color:var(--primary);font-weight:bold;margin-right:8px;}
+        .info{grid-area:info;background:var(--secondary);padding:18px;border-radius:8px;} .info h3{margin:0 0 12px;color:var(--primary);font-size:18px;} .section{margin-bottom:14px;} .section h4{margin:0 0 8px;font-size:15px;border-bottom:1px solid var(--border);padding-bottom:4px;} .section ul{margin:0;padding-left:18px;list-style:none;} .section li{margin-bottom:6px;font-size:14px;} .section li i{margin-right:6px;width:16px;text-align:center;color:var(--primary);}
+        footer{grid-area:foot;text-align:center;font-size:12px;color:#888;border-top:1px solid var(--border);padding-top:10px;}
+        .print{position:fixed;bottom:28px;right:28px;background:var(--primary);color:#fff;border:none;padding:14px 22px;border-radius:40px;cursor:pointer;font-size:15px;box-shadow:0 4px 8px rgba(0,0,0,.2);} .print i{margin-right:8px;} .print:hover{background:#0b6d7c;}
+        @media print{body{padding:0;background:#fff;} .page{width:100%;min-height:0;box-shadow:none;margin:0;border:1px dashed #999;padding:10mm;} .print{display:none;}}
+    </style>
+</head>
+<body>
+<button class="print" onclick="window.print()"><i class="fas fa-print"></i>打印攻略</button>
+<div class="page">
+<header>
+    <h1>涠洲岛三日游</h1>
+    <p>北京 → 北海 → 涠洲岛 | 建议出行时间：9月中旬 (台风季尾声, 注意关注天气)</p>
+    <div class="weather"><i class="fas fa-cloud-sun"></i>北海天气参考：多云 27-33℃, 湿度大</div>
+</header>
+<section class="overview">
+    <div class="card">
+        <h3>第一天: 启程与初识海岛</h3>
+        <ul>
+            <li><i class="fas fa-plane-departure icon-ship"></i> 早班机抵达北海</li>
+            <li><i class="fas fa-ship icon-ship"></i> 北海国际客运港 → 涠洲岛</li>
+            <li><i class="fas fa-umbrella-beach icon-sea"></i> 石螺口沙滩日落</li>
+        </ul>
+    </div>
+    <div class="card">
+        <h3>第二天: 全景深度游</h3>
+        <ul>
+            <li><i class="fas fa-mountain icon-sea"></i> 火山口公园</li>
+            <li><i class="fas fa-water icon-sea"></i> 五彩滩日出</li>
+            <li><i class="fas fa-fish icon-food"></i> 海鲜大排档</li>
+        </ul>
+    </div>
+    <div class="card">
+        <h3>第三天: 悠闲返程</h3>
+        <ul>
+            <li><i class="fas fa-church icon-culture"></i> 法国天主教堂</li>
+            <li><i class="fas fa-ship icon-ship"></i> 午后返北海 → 飞回北京</li>
+        </ul>
+    </div>
+</section>
+<main class="detail">
+    <div class="day">
+        <h2>DAY 1 北京 ✈ 北海 → 涠洲岛</h2>
+        <div class="timeline">
+            <div class="item"><div class="content"><strong><span class="time">06:50</span>北京首都/大兴机场出发</strong><p>推荐直飞北海的早班机，约3小时。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">10:30</span>抵达北海福成机场</strong><p>乘机场大巴或网约车40分钟至北海国际客运港。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">12:00</span>北海 → 涠洲岛船票办理</strong><p>提前网上预订船票(往返约300元)。建议选13:00班次，航程约70分钟。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">14:20</span>入住海边民宿</strong><p>推荐石螺口或南湾海域高评价民宿，均价¥300-500/晚，海景房性价比高。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">16:00</span>石螺口沙滩</strong><p>自由玩水、浮潜(租赁装备¥80左右)。傍晚看绝美日落。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">18:30</span>海鲜夜市</strong><p>石螺口海鲜烧烤一条街，推荐：椒盐皮皮虾、蒜蓉扇贝，约¥100/人。</p></div></div>
+        </div>
+    </div>
+    <div class="day">
+        <h2>DAY 2 涠洲岛环岛深度</h2>
+        <div class="timeline">
+            <div class="item"><div class="content"><strong><span class="time">05:30</span>五彩滩观日出</strong><p>提前约车/电瓶车20分钟到达，观赏火烧云。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">07:30</span>早餐</strong><p>民宿提供或品尝岛上粉汤、椰奶等当地风味≈¥25。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">09:00</span>火山口地质公园</strong><p>门票¥98，观赏火山岩地貌与灯塔，全程约2小时。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">12:00</span>午餐—南湾海鲜市场</strong><p>自己挑选海鲜加代加工，平均人均¥120，可尝花螺、海胆蒸蛋。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">14:30</span>潜水/海上项目</strong><p>南湾潜水基地，初级体验潜¥380/30min；或选择摩托艇、帆船。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">17:00</span>滴水丹屏日落</strong><p>红色砂岩峭壁配落日，美拍圣地。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">19:00</span>篝火烧烤 + 星空</strong><p>部分民宿组织篝火派对，亦可租炉自烤。欣赏南海星空。</p></div></div>
+        </div>
+    </div>
+    <div class="day">
+        <h2>DAY 3 岛上慢游 ✈ 返京</h2>
+        <div class="timeline">
+            <div class="item"><div class="content"><strong><span class="time">08:00</span>法国天主教堂</strong><p>打卡哥特式建筑，看海晨光照射石壁。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">10:00</span>咸头岭灯塔&贝壳沙滩</strong><p>轻徒步，看海蚀景观，拾贝壳。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">12:30</span>午餐—斋饭或疍家小炒</strong><p>体验岛上本地渔村菜，人均¥60。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">14:30</span>码头安检 → 返北海</strong><p>建议乘15:00船班，16:10抵北海。</p></div></div>
+            <div class="item"><div class="content"><strong><span class="time">18:50</span>北海福成机场起飞</strong><p>返程航班约21:50抵达北京，结束愉快旅程。</p></div></div>
+        </div>
+    </div>
+</main>
+<aside class="info">
+    <h3><i class="fas fa-info-circle"></i> 实用信息</h3>
+    <div class="section"><h4><i class="fas fa-bed"></i> 住宿推荐</h4>
+        <ul>
+            <li><i class="fas fa-star icon-bed"></i> <strong>海上印象·观海民宿</strong> (石螺口) ¥400/晚 含早餐</li>
+            <li><i class="fas fa-star icon-bed"></i> <strong>简爱轻奢海景酒店</strong> (南湾) ¥500/晚 高层无边海景</li>
+        </ul>
+    </div>
+    <div class="section"><h4><i class="fas fa-utensils"></i> 必吃清单</h4>
+        <ul>
+            <li><i class="fas fa-fish icon-food"></i> 生蚝、海胆蒸蛋、皮皮虾</li>
+            <li><i class="fas fa-ice-cream icon-food"></i> 芒果冰、椰子冻</li>
+            <li><i class="fas fa-pepper-hot icon-food"></i> 北部湾黑暗料理——海蛇汤(重口慎选)</li>
+        </ul>
+    </div>
+    <div class="section"><h4><i class="fas fa-bus"></i> 岛上交通</h4>
+        <ul>
+            <li><i class="fas fa-motorcycle icon-ship"></i> 电动车租赁 ¥80/天，需要身份证和押金</li>
+            <li><i class="fas fa-taxi icon-ship"></i> 小面包车拼车 ¥20/人/段，多为民宿可代约</li>
+        </ul>
+    </div>
+    <div class="section"><h4><i class="fas fa-lightbulb"></i> 温馨提示</h4>
+        <ul>
+            <li><i class="fas fa-water icon-sea"></i> 9月紫外线强，注意防晒补水</li>
+            <li><i class="fas fa-wind icon-sun"></i> 关注船只停航通知，台风天可能取消航班</li>
+            <li><i class="fas fa-ticket-alt"></i> 景区可提前网上购票，节约排队时间</li>
+        </ul>
+    </div>
+    <div class="section"><h4><i class="fas fa-phone-alt"></i> 紧急联系电话</h4>
+        <ul>
+            <li><i class="fas fa-ambulance"></i> 急救：120</li>
+            <li><i class="fas fa-police-badge"></i> 报警：110</li>
+            <li><i class="fas fa-life-ring"></i> 海上搜救：12395</li>
+        </ul>
+    </div>
+</aside>
+<footer>祝您旅途愉快！ © AI行程设计</footer>
+</div>
+</body>
+</html> 
